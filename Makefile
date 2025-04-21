@@ -2,7 +2,7 @@
 .EXPORT_ALL_VARIABLES:
 
 # Variables globales
-AWS_PROFILE ?= aws-profile
+AWS_PROFILE ?= scc-aws
 
 # HOW TO EXECUTE:
 # - Ejecutar PLAN: make tf-plan env=dev
