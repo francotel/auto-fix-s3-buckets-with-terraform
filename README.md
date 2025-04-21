@@ -1,0 +1,1 @@
+# auto-fix-s3-buckets-with-terraform
