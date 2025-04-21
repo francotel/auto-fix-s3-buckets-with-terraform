@@ -1,0 +1,130 @@
+# Ignorar archivos generados por el sistema operativo
+.DS_Store
+Thumbs.db
+
+# Ignorar archivos de configuración del editor
+*.swp
+*.swo
+*.swn
+*.log
+*.tmp
+
+# Ignorar archivos de configuración de IDEs y editores
+.vscode/
+.idea/
+*.code-workspace
+
+# Ignorar directorios y archivos generados por compiladores
+build/
+dist/
+out/
+*.class
+*.jar
+
+# Ignorar dependencias y archivos de gestión de paquetes
+node_modules/
+vendor/
+*.lock
+*.gem
+*.pyc
+
+# Ignorar archivos de configuración de entornos virtuales
+venv/
+env/
+.env
+*.env
+
+# Ignorar archivos de configuración de herramientas de construcción
+*.iml
+*.project
+*.classpath
+*.settings/
+
+# Ignorar archivos de configuración de CI/CD
+# *.yml
+# *.yaml
+# *.json
+
+# Ignorar archivos de salida de pruebas y resultados de linting
+coverage/
+*.coverage
+*.gcda
+*.gcno
+
+# Ignorar archivos de registro
+*.log
+
+# Ignorar archivos de instalación y de configuración de paquetes
+*.zip
+*.tar.gz
+*.tar.bz2
+
+# Ignorar archivos de caché y temporales
+*.cache
+*.tmp
+*.bak
+
+# Ignorar archivos específicos del proyecto
+# (Agrega aquí los archivos y directorios específicos que quieras ignorar para tu proyecto)
+
+# Ignorar archivos de configuración personal
+*.sublime-project
+*.sublime-workspace
+
+# Ignorar archivos de documentación generada
+*.pdf
+*.docx
+
+# Ignorar archivos de bases de datos y dumps
+*.sql
+*.db
+*.sqlite
+
+# Ignorar archivos generados por Docker
+*.dockerignore
+
+# Ignorar configuraciones y logs de Vagrant
+.vagrant/
+*.box
+
+# Local .terraform directories
+**/.terraform/*
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+
+# Crash log files
+crash.log
+crash.*.log
+
+# Exclude all .tfvars files, which are likely to contain sensitive data, such as
+# password, private keys, and other secrets. These should not be part of version 
+# control as they are data points which are potentially sensitive and subject 
+# to change depending on the environment.
+*.tfvars
+*.tfvars.json
+*.terraform.lock.hcl
+
+# Ignore override files as they are usually used to override resources locally and so
+# are not checked in
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Ignore transient lock info files created by terraform apply
+.terraform.tfstate.lock.info
+
+# Include override files you do wish to add to version control using negated pattern
+# !example_override.tf
+
+# Include tfplan files to ignore the plan output of command: terraform plan -out=tfplan
+# example: *tfplan*
+
+# Ignore CLI configuration files
+.terraformrc
+terraform.rc
+
+tfplan
+azurek8s
