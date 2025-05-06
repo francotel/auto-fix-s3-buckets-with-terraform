@@ -46,3 +46,8 @@ variable "slack-webhook-url" {
 variable "email-alert" {
   type = list(string)
 }
+
+variable "s3-force-destroy" {
+  description = "Delete Bucket"
+  default     = true
+}
