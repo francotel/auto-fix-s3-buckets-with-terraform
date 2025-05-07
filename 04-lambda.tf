@@ -58,6 +58,7 @@ module "lambda-s3-fix" {
         "s3:PutEncryptionConfiguration",
         "s3:PutBucketPolicy",
         "s3:ListAllMyBuckets",
+        "s3:GetEncryptionConfiguration",
         "s3:GetPublicAccessBlock",
         "s3:PutPublicAccessBlock"
       ],

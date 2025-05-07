@@ -42,6 +42,7 @@ resource "aws_config_config_rule" "s3-security-rule" {
 
   scope {
     compliance_resource_types = ["AWS::S3::Bucket"]
+    compliance_resource_id    = aws_s3_bucket.vulnerable-demo-bucket.id
   }
 
   input_parameters = jsonencode({
