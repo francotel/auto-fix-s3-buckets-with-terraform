@@ -30,20 +30,6 @@ data "aws_iam_policy_document" "config-bucket-policy" {
       values   = ["bucket-owner-full-control"]
     }
   }
-
-  #   statement {
-  #     sid     = "DenyAllExceptAWSConfig"
-  #     effect  = "Deny"
-  #    actions = ["s3:PutObject", "s3:PutObjectAcl"]
-  #     resources = [
-  #       "arn:aws:s3:::s3-bucket-config-logs/*"
-  #     ]
-
-  #     not_principals {
-  #       type        = "Service"
-  #       identifiers = ["config.amazonaws.com"]
-  #     }
-  #   }
 }
 
 module "s3-bucket" {
@@ -53,8 +39,8 @@ module "s3-bucket" {
   bucket                   = "s3-bucket-config-logs"
   control_object_ownership = true
   force_destroy            = var.s3-force-destroy
-  #   attach_policy            = true
-  #   policy                   = data.aws_iam_policy_document.config-bucket-policy.json
+  attach_policy            = true
+  policy                   = data.aws_iam_policy_document.config-bucket-policy.json
 
   block_public_acls       = true
   block_public_policy     = true

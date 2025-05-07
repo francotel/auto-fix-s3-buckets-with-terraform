@@ -1,7 +1,6 @@
 resource "aws_config_configuration_recorder" "main" {
   name     = "config-recorder-${var.project}"
   role_arn = module.iam-role-config.iam_role_arn
-  #role_arn = aws_iam_role.r.arn
 
   recording_group {
     all_supported                 = true
@@ -15,6 +14,7 @@ resource "aws_config_configuration_recorder" "main" {
 resource "aws_config_delivery_channel" "main" {
   name           = "config-delivery-${var.project}"
   s3_bucket_name = module.s3-bucket.s3_bucket_id
+  depends_on     = [aws_config_configuration_recorder.main]
 }
 
 resource "aws_config_retention_configuration" "main" {
@@ -24,4 +24,32 @@ resource "aws_config_retention_configuration" "main" {
 resource "aws_config_configuration_recorder_status" "main" {
   name       = aws_config_configuration_recorder.main.name
   is_enabled = true
+  depends_on = [aws_config_delivery_channel.main]
+}
+
+resource "aws_config_config_rule" "s3-security-rule" {
+  name        = "s3-custom-rule-${var.project}"
+  description = "Custom rule for S3 security compliance checks"
+  source {
+    owner             = "CUSTOM_LAMBDA"
+    source_identifier = module.lambda-s3-fix.lambda_function_arn
+
+    source_detail {
+      event_source = "aws.config"
+      message_type = "ConfigurationItemChangeNotification"
+    }
+  }
+
+  scope {
+    compliance_resource_types = ["AWS::S3::Bucket"]
+  }
+
+  input_parameters = jsonencode({
+    "requiredEncryption" : true,
+    "blockPublicAccess" : true
+  })
+
+  depends_on = [
+    aws_config_configuration_recorder_status.main
+  ]
 }
